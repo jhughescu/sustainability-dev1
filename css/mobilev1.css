@@ -1,0 +1,50 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+body, #wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    font-family: sans-serif;
+}
+/* Mobile Header Styles */
+
+/* Base styles */
+#header {
+  display: flex;
+  justify-content: left;
+/*  align-items: flex-end;*/
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+#header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+  #header {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+      height: 13rem;
+    z-index: 999;
+      background-color: red;
+  }
+
+  #header h1 {
+    font-size: 18px;
+  }
+}
+
+
+
+
+
+
