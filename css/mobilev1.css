@@ -94,6 +94,7 @@ body {
       align-items: flex-end;
     background-color: #000;
     height: 6.9rem;
+    height: 120px;
     color: white;
 /*    opacity: 0.5;*/
 }
@@ -120,7 +121,7 @@ h1 {
 /* Media query for mobile devices */
 @media (max-width: 767px) {
     #header {
-        height: 12rem;
+/*        height: 12rem;*/
         background-color: firebrick;
     }
     #centered {
