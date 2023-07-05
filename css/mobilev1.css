@@ -121,6 +121,7 @@ h1 {
 @media (max-width: 767px) {
     #header {
         height: 12rem;
+        background-color: firebrick;
     }
     #centered {
         position: relative;
