@@ -3,49 +3,120 @@
     margin: 0;
     padding: 0;
 }
-body, #wrapper {
+
+body,
+#wrapper {
     width: 100%;
     height: 100%;
     min-height: 100%;
-    font-family: sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    background-color: #f2f2f2;
+    position: absolute;
+}
+#centered {
+/*    background-color: red;*/
+    position: relative;
+    max-width: 1280px;
+    height: 100%;
+    margin: 0px auto;
+}
+#subheader {
+/*    display: none;*/
+    position: relative;
+    padding: 170px 0px 30px 0px;
+    color: black;
+    width: 100%;
+/*    height: 200px;*/
+    font-family: 'arial', serif;
+    font-size: 2.4em;
+    font-weight: bold;
+/*    display: flex;*/
+/*
+    align-content: center;
+    justify-items: center;
+*/
+/*    background-color: yellow;*/
+    text-align: center;
+}
+#subheader #icon {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-image: url(../assets/headicon.svg);
+    margin: 20px auto;
+}
+#panel {
+/*    display: none;*/
+    position: relative;
     background-color: white;
+    width: calc(100% - 40px);
+/*    top: 20rem;*/
+    left: 20px;
+/*    height: 100%;*/
+/*    width: 100%;*/
+    min-height: 1200px;
+    border-radius: 8px;
 }
-/* Mobile Header Styles */
 
-/* Base styles */
 #header {
-  display: flex;
-  justify-content: left;
-/*  align-items: flex-end;*/
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
+    z-index: 20;
+}
+#content {
+    z-index: 10;
+}
+#logo {
+/*    z-index: 22;*/
+}
+#header h1 {
+    z-index: 30;
+}
+#content {
+    position: absolute;
+    width: 100%;
+    color: #000;
+}
+#content div {
+/*    position: absolute;*/
+/*    width: 100%;*/
+}
+#header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    left: 0px;
+    justify-content: left;
+      align-items: flex-end;
+    background-color: #000;
+    height: 6.9rem;
+    color: white;
+/*    opacity: 0.5;*/
+}
+h1 {
+    margin: 0;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: -0.05rem;
+    font-size: 1.7rem;
+    padding: 2.5rem 8.3rem;
+    position: fixed;
 }
 
-#header h1 {
-  margin: 0;
-  font-size: 20px;
+#logo {
+    background-color: white;
+/*    position: absolute;*/
+    position: fixed;
+    width: 4.9rem;
+    height: 4.9rem;
+    margin: 1.1rem 1.5rem;
+    border-radius: 50%;
 }
 
 /* Media query for mobile devices */
 @media (max-width: 767px) {
-  #header {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    width: 100%;
-      height: 13rem;
-    z-index: 999;
-      background-color: black;
-  }
-
-  #header h1 {
-    font-size: 18px;
-  }
+    #header {
+    }
+    #centered {
+        position: relative;
+        height: 100%;
+    }
 }
-
-
-
-
-
-
