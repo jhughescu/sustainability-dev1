@@ -121,8 +121,8 @@ h1 {
 /* Media query for mobile devices */
 @media (max-width: 767px) {
     #header {
-/*        height: 12rem;*/
-        background-color: firebrick;
+        height: 12rem;
+        background-color: #103e19;
     }
     #centered {
         position: relative;
