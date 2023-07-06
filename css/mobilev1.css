@@ -121,8 +121,8 @@ h1 {
 /* Media query for mobile devices */
 @media (max-width: 767px) {
     #header {
-        height: 12rem;
-        background-color: #103e19;
+        height: 8rem;
+        background-color: #10223e;
     }
     #centered {
         position: relative;
