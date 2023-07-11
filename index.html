@@ -67,12 +67,14 @@
                         <p>Adopt your strategy to survive and succeed.</p>
                         <p>Invest your resources and attract support from others.</p>
                         <div id='resources-meter'><p>4</p></div>
+                        <p>remaining</p>
                     </div>
                 </div>
             </div>
         </div>
         <script>
-            let homepage = 'main-resources';
+            let homepage = 'main-home';
+//            let homepage = 'main-resources';
             let c = 10;
             function countdown () {
                 $('#resources-meter').find('p').html(c);
@@ -91,12 +93,12 @@
                     if (p !== 'main-home') {
                         $(`#subheader`).addClass('sub');
                     }
+                    document.body.scrollTop = document.documentElement.scrollTop = 0;
                 }
             }
             function mainClick (id) {
                 showPage();
                 showPage('main-' + id);
-
             }
             function setup () {
                 $('.tile.button.home').off('click');
@@ -108,6 +110,11 @@
                         alert('clicked element requires an id but has none specified')
                     }
                 });
+                $('.backbutton').off('click');
+                $('.backbutton').on('click', function () {
+                    showPage(homepage);
+                });
+
                 $('.tile').css({height: $('.tile').width() + 'px'});
 //                showPage();
                 showPage(homepage);
