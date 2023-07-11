@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Sustainabilty Mobile Screen dev</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel='stylesheet' href='css/mobilev1.css'>
+    </head>
+
+    <body>
+        <div id='wrapper'>
+            <div id='centered'>
+                <div id='header'>
+                    <div id='logo'></div>
+                    <h1>company Name</h1>
+                </div>
+                <div id='content'>
+                    <div id='subheader' class='sub'>
+                        <div id='yourep' class='full'>You represent</div>
+                        <div id='icon'></div>
+                        <div id='crown'></div>
+                        <div id='title'>
+                            <h2>Alex Gogetum 2</h2>
+                            <p class='title'>(Individual Change Maker)</p>
+                        </div>
+                        <div id='summary'>
+                            <p class='title italic'><i>You have been assigned the role of team leader for this round. This means that only you will be able to submit your team’s decisions.</i></p>
+                        </div>
+                    </div>
+
+                    <div class='main page' id='main-resources'>
+                        <div class='button backbutton'></div>
+                        <h3>Resources</h3>
+                        <p>Adopt your strategy to survive and succeed.</p>
+                        <p>Invest your resources and attract support from others.</p>
+                        <div id='resources-meter'><p>4</p></div>
+                        <p>remaining</p>
+                    </div>
+                    <div class='main page hidden' id='main-bios'>
+                        <div class='button backbutton'></div>
+                        <h3>Bios</h3>
+                    </div>
+                    <div class='main page hidden' id='main-headlines2030'>
+                        <div class='button backbutton'></div>
+                        <h3>2030 Headlines</h3>
+                    </div>
+                    <div class='main page hidden' id='main-move2030'>
+                        <div class='button backbutton'></div>
+                        <h3>2030 Move</h3>
+                    </div>
+                    <div class='main page hidden' id='main-headlines2040'>
+                        <div class='button backbutton'></div>
+                        <h3>2040 Headlines</h3>
+                    </div>
+                    <div class='main page hidden' id='main-move2040'>
+                        <div class='button backbutton'></div>
+                        <h3>2040 Move</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            let homepage = 'menu';
+//            let homepage = 'main-resources';
+            let c = 10;
+            function countdown () {
+                $('#resources-meter').find('p').html(c);
+                if (c > 1) {
+                    c -= 1;
+                } else {
+                    c = 10;
+                }
+            }
+
+            function showPage (p) {
+                console.log(p + '.html');
+//                window.locaton = p + '.html';
+//                window.locaton = 'menu.html';
+                window.location = p + '.html';
+                console.log('dunne')
+//                $(`.main`).addClass('hidden');
+//                $(`#subheader`).removeClass('sub');
+//                if (p) {
+//                    $(`#${p}`).removeClass('hidden');
+//                    if (p !== 'main-home') {
+//                        $(`#subheader`).addClass('sub');
+//                    }
+//                    document.body.scrollTop = document.documentElement.scrollTop = 0;
+//                }
+            }
+            function mainClick (id) {
+                window.locaton = id + '.html';
+//                showPage();
+//                showPage('main-' + id);
+            }
+            function setup () {
+//                $('.tile.button.home').off('click');
+//                $('.tile.button.home').on('click', function () {
+//                    let id = $(this).attr('id');
+//                    if (id) {
+//                        mainClick(id.replace('tile-', ''));
+//                    } else {
+//                        alert('clicked element requires an id but has none specified')
+//                    }
+//                });
+                $('.backbutton').off('click');
+                $('.backbutton').on('click', function () {
+                    showPage(homepage);
+                });
+
+                $('.tile').css({height: $('.tile').width() + 'px'});
+//                showPage();
+//                showPage(homepage);
+                setInterval(countdown, 2000);
+            }
+            $(document).ready(function () {
+                setup();
+            });
+        </script>
+    </body>
+</html>
