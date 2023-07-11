@@ -318,6 +318,7 @@ h1 {
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     padding-bottom: 50px;
+    background-color: bisque;
 }
 
 .button {
