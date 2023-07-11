@@ -22,18 +22,100 @@
                     <h1>company Name</h1>
                 </div>
                 <div id='content'>
-                    <div id='subheader'>
+                    <div id='subheader' class=''>
                         <div id='yourep' class='full'>You represent</div>
                         <div id='icon'></div>
                         <div id='crown'></div>
                         <div id='title'>
-                            <p class='name'>Alex Gogetum 2</p>
+                            <h2>Alex Gogetum 2</h2>
                             <p class='title'>(Individual Change Maker)</p>
                         </div>
+                        <div id='summary'>
+                            <p class='title italic'><i>You have been assigned the role of team leader for this round. This means that only you will be able to submit your team’s decisions.</i></p>
+                        </div>
                     </div>
-                    <div id='panel'>the panel</div>
+<!--                    <div id='panel'>the panel</div>-->
+                    <div class='main grid-container' id='main-home'>
+                        <div class='grid-item tile button home' id='tile-resources'>
+                            <div class='icon resources'></div>
+                            <div class='title'>Resources</div>
+                        </div>
+                        <div class='grid-item tile button home'>
+                            <div class='icon'></div>
+                            <div class='title'>Bios</div>
+                        </div>
+                        <div class='grid-item tile button home'>
+                            <div class='icon'></div>
+                            <div class='title'>2030 Headlines</div>
+                        </div>
+                        <div class='grid-item tile button home'>
+                            <div class='icon'></div>
+                            <div class='title'>2030 Move</div>
+                        </div>
+                        <div class='grid-item tile button home'>
+                            <div class='icon'></div>
+                            <div class='title'>2040 Headlines</div>
+                        </div>
+                        <div class='grid-item tile button home'>
+                            <div class='icon'></div>
+                            <div class='title'>2040 Move</div>
+                        </div>
+                    </div>
+                    <div class='main page hidden' id='main-resources'>
+                        <h3>Resources</h3>
+                        <div class='button backbutton'></div>
+                        <p>Adopt your strategy to survive and succeed.</p>
+                        <p>Invest your resources and attract support from others.</p>
+                        <div id='resources-meter'><p>4</p></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <script>
+            let homepage = 'main-resources';
+            let c = 10;
+            function countdown () {
+                $('#resources-meter').find('p').html(c);
+                if (c > 1) {
+                    c -= 1;
+                } else {
+                    c = 10;
+                }
+            }
+
+            function showPage (p) {
+                $(`.main`).addClass('hidden');
+                $(`#subheader`).removeClass('sub');
+                if (p) {
+                    $(`#${p}`).removeClass('hidden');
+                    if (p !== 'main-home') {
+                        $(`#subheader`).addClass('sub');
+                    }
+                }
+            }
+            function mainClick (id) {
+                showPage();
+                showPage('main-' + id);
+
+            }
+            function setup () {
+                $('.tile.button.home').off('click');
+                $('.tile.button.home').on('click', function () {
+                    let id = $(this).attr('id');
+                    if (id) {
+                        mainClick(id.replace('tile-', ''));
+                    } else {
+                        alert('clicked element requires an id but has none specified')
+                    }
+                });
+                $('.tile').css({height: $('.tile').width() + 'px'});
+//                showPage();
+                showPage(homepage);
+                setInterval(countdown, 2000);
+            }
+            $(document).ready(function () {
+                setup();
+            });
+        </script>
     </body>
 </html>
