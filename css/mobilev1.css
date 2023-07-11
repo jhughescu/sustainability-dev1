@@ -317,8 +317,8 @@ h1 {
     grid-auto-rows: 1fr;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
-    padding-bottom: 50px;
-    background-color: bisque;
+    padding-bottom: 90px;
+/*    background-color: bisque;*/
 }
 
 .button {
