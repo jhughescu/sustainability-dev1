@@ -62,8 +62,34 @@
                             <div class='title'>2040 Move</div>
                         </div>
                     </div>
-
-
+                    <div class='main page hidden' id='main-resources'>
+                        <div class='button backbutton'></div>
+                        <h3>Resources</h3>
+                        <p>Adopt your strategy to survive and succeed.</p>
+                        <p>Invest your resources and attract support from others.</p>
+                        <div id='resources-meter'><p>4</p></div>
+                        <p>remaining</p>
+                    </div>
+                    <div class='main page hidden' id='main-bios'>
+                        <div class='button backbutton'></div>
+                        <h3>Bios</h3>
+                    </div>
+                    <div class='main page hidden' id='main-headlines2030'>
+                        <div class='button backbutton'></div>
+                        <h3>2030 Headlines</h3>
+                    </div>
+                    <div class='main page hidden' id='main-move2030'>
+                        <div class='button backbutton'></div>
+                        <h3>2030 Move</h3>
+                    </div>
+                    <div class='main page hidden' id='main-headlines2040'>
+                        <div class='button backbutton'></div>
+                        <h3>2040 Headlines</h3>
+                    </div>
+                    <div class='main page hidden' id='main-move2040'>
+                        <div class='button backbutton'></div>
+                        <h3>2040 Move</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,6 +97,76 @@
             let homepage = 'main-home';
 //            let homepage = 'main-resources';
             let c = 10;
+            let oDivs = {
+                subheader: $('#subheader'),
+                icon: $('#subheader').find('#icon'),
+                crown: $('#subheader').find('#crown'),
+                summary: $('#summary'),
+                yourep: $('#yourep')
+            }
+            let oUp = {
+                subheader: {
+                    'padding-top': '190px'
+                },
+                icon: {
+                    width: '120px',
+                    height: '120px'
+                },
+                crown: {
+                    width: '58px',
+                    height: '58px',
+                    left: 'calc(50% + 29px)',
+                    top: '200px'
+                },
+                summary: {
+                    'font-size': '0px',
+                    'height': '0px'
+                },
+                yourep: {
+                    'font-size': '0px',
+                    'height': '0px'
+                }
+            };
+            let oDown = {
+                subheader: {
+                    'padding-top': '260px'
+                },
+                icon: {
+                    width: '210px',
+                    height: '210px'
+                },
+                crown: {
+                    width: '100px',
+                    height: '100px',
+                    left: 'calc(50% + 50px)',
+                    top: '330px'
+                },
+                summary: {
+                    'font-size': '3rem',
+                    'height': 'auto'
+                },
+                yourep: {
+                    'font-size': '2.4rem',
+                    'height': 'auto'
+                }
+            };
+            let oUpFunk = {
+                crown:
+                    function () {
+//                        console.log('oooooooo')
+                        $('#subheader').find('#crown').addClass('sub');
+                    }
+
+            };
+            let oDownFunk = {
+                crown:
+                    function () {
+//                        console.log('oooooooo')
+//                        $('#subheader').find('#crown').addClass('sub');
+                    }
+
+            };
+            let state = null;
             function countdown () {
                 $('#resources-meter').find('p').html(c);
                 if (c > 1) {
@@ -79,80 +175,96 @@
                     c = 10;
                 }
             }
-
+            function expandSubheader (boo, f, p) {
+                let d = 200;
+                let o = boo ? oUp : oDown
+                let ofk = boo ? oUpFunk : oDownFunk;
+                for (i in oDivs) {
+                    oDivs[i].animate(o[i], d, function () {
+                        if (ofk.hasOwnProperty(i)) {
+                            ofk[i]();
+                        }
+                    });
+                }
+                if (f) {
+                    setTimeout(f, d, p);
+                }
+            }
+            function test (p) {
+                console.log('test ' + p)
+            }
             function showPage (p) {
+                console.log('show ' + p);
 //                window.location = p + '.html';
-//                $(`.main`).addClass('hidden');
+                $(`.main`).addClass('hidden');
 //                $(`#subheader`).toggleClass('sub', 2000);
 //                $(`#subheader`).removeClass('sub');
-//                if (p) {
-//                    $(`#${p}`).removeClass('hidden');
-//                    if (p !== 'main-home') {
+                if (p) {
+//                    console.log($(`#${p}`));
+                    $(`#${p}`).removeClass('hidden');
+                    $(`#${p}`).show();
+                    let newstate = p;
+                    window.history.pushState(newstate, '', "");
+                    console.log(window.history);
+                    if (p !== 'main-home') {
 //                        $(`#subheader`).addClass('sub');
-//                    }
-//                    document.body.scrollTop = document.documentElement.scrollTop = 0;
-//                }
-//                $('#summary').fadeOut(300);
-                let d = 200;
-                $('#subheader').animate({
-                    'padding-top': '190px'
-                }, d);
-                $('#subheader').find('#icon').animate({
-                    width: '120px',
-                    height: '120px'
-                }, d);
-                $('#subheader').find('#crown').animate({
-                    width: '58px',
-                    height: '58px',
-                    left: 'calc(50% + 29px)',
-                    top: '200px'
-                //    top: '200px'
-                }, d, function () {
-                    $('#subheader').find('#crown').addClass('sub');
-//                    $('#summary').hide();
-//                    $(`#subheader`).addClass('sub');
-                });
-//                $('#summary').animate({height: '0px'}, 3000, function () {
-//                    $('#summary').css({opacity: 0});
-//                });
-                $('#summary').animate({
-                    'font-size': '0px',
-                    'height': '0px'
-                }, d, function () {
-//                    $('#summary').css({opacity: 0});
-                });
-                $('#yourep').animate({
-                    'font-size': '0px',
-                    'height': '0px'
-                }, d, function () {
-//                    $('#summary').css({opacity: 0});
-                });
+                    }
+                    document.body.scrollTop = document.documentElement.scrollTop = 0;
+                }
+
             }
-            function mainClick (id) {
-                console.log(id);
-                showPage(id);
+            function mainClick (id, expand) {
+//                console.log(id);
+//                showPage(id);
+                id = 'main-' + id;
+                $(`.main`).addClass('hidden');
+                expandSubheader(expand, showPage, id);
+                $('.main').hide();
 //                showPage('main-' + id);
+            }
+            function setSubheaderVals () {
+                // Set all the return values for animating the subheader
+                for (var i in oDivs) {
+                    let o = oDown[i];
+                    for (j in o) {
+                        oDown[i][j] = oDivs[i].css(j);
+                    }
+                }
             }
             function setup () {
                 $('.tile.button.home').off('click');
                 $('.tile.button.home').on('click', function () {
                     let id = $(this).attr('id');
                     if (id) {
-                        mainClick(id.replace('tile-', ''));
+                        mainClick(id.replace('tile-', ''), true);
                     } else {
                         alert('clicked element requires an id but has none specified')
                     }
                 });
-//                $('.backbutton').off('click');
-//                $('.backbutton').on('click', function () {
+                $('.backbutton').off('click');
+                $('.backbutton').on('click', function () {
 //                    showPage(homepage);
-//                });
+//                    expandSubheader(false);
+                    mainClick('home', false);
+                });
 
                 $('.tile').css({height: $('.tile').width() + 'px'});
 //                showPage();
 //                showPage(homepage);
 //                setInterval(countdown, 2000);
+                state = homepage;
+                console.log('clear the history')
+                window.history.replaceState(state, '', '');
+                setSubheaderVals();
             }
+            window.onpopstate = function (event) {
+                console.log(event);
+                if (event.state) {
+                    state = event.state;
+                }
+                console.log(state); // See example render function in summary below
+                showPage(state, true);
+            };
             $(document).ready(function () {
                 setup();
             });
