@@ -72,6 +72,26 @@ let state = null;
 
 function updateDebug(p, v) {
 //    console.log(p, v);
+    let pre = 'susdev-';
+    let after = '';
+    let db = $('#debug');
+    let id = `debug-${p}`;
+    let out = '';
+    if (localStorage.getItem(pre + id)) {
+        if (localStorage.getItem(pre + id) !== v) {
+            after = '*';
+        }
+    }
+    if (db.find(id).length === 0) {
+        db.append(`<p id=${id}></p>`);
+    }
+    out = `${p}: <span class=${after === '' ? '' : 'updated'}>${v}${after}</span>`;
+    db.find(`#${id}`).html(out);
+    localStorage.setItem(pre + id, v);
+}
+
+function updateDebug1(p, v) {
+//    console.log(p, v);
     let db = $('#debug');
     if (db.find(p).length === 0) {
         db.append(`<p id='debug-${p}'></p>`);
@@ -79,6 +99,27 @@ function updateDebug(p, v) {
     db.find(`#debug-${p}`).html(`${p}: ${v}`);
 }
 
+
+function updateDebug2(p, v) {
+//    console.log(p, v);
+    let pre = 'susdev-';
+    let post = '';
+    let id = `debug-${p}`;
+    let db = $('#debug');
+    if (db.find(`#${id}`).length === 0) {
+        db.append(`<p id=${id}'></p>`);
+    }
+//    if (localStorage.getItem(pre + id)) {
+//        if (localStorage.getItem(pre + id) !== v) {
+//            post = '*';
+//        }
+//    }
+    console.log(`#${id}`);
+    console.log(db.find(`#${id}`));
+//    db.find(`#${id}`).html(`${p}: ${v}`);
+    db.find(`#${id}`).html('shit');
+    localStorage.setItem(pre + id, v);
+}
 function countdown() {
     $('#resources-meter').find('p').html(c);
     if (c > 1) {

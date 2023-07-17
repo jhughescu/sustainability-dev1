@@ -197,6 +197,10 @@ body {
     color: #85d66d;
 /*    pointer-events: none;*/
 }
+#debug .updated {
+    color: #b0d926;
+    font-weight: bold;
+}
 #debug:hover {
     color: #69fa3e;
 }
