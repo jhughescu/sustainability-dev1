@@ -70,6 +70,15 @@ let oDownFunk = {
 };
 let state = null;
 
+function updateDebug(p, v) {
+//    console.log(p, v);
+    let db = $('#debug');
+    if (db.find(p).length === 0) {
+        db.append(`<p id='debug-${p}'></p>`);
+    }
+    db.find(`#debug-${p}`).html(`${p}: ${v}`);
+}
+
 function countdown() {
     $('#resources-meter').find('p').html(c);
     if (c > 1) {
@@ -84,10 +93,10 @@ function expandSubheader(boo, f, p, updateHistory) {
     let d = 200;
     let o = boo ? oUp : oDown
     let ofk = boo ? oUpFunk : oDownFunk;
-//    console.log(o);
-//    console.log(ofk);
+    //    console.log(o);
+    //    console.log(ofk);
     for (i in oDivs) {
-//        console.log(oDivs[i]);
+        //        console.log(oDivs[i]);
         oDivs[i].animate(o[i], d, function () {
             if (ofk.hasOwnProperty(i)) {
                 ofk[i]();
@@ -103,8 +112,10 @@ function test(p) {
     console.log('test ' + p)
 }
 
-function updateHistory (p, update) {
-    const newState = {page: p};
+function updateHistory(p, update) {
+    const newState = {
+        page: p
+    };
     const newURL = '#' + p;
     if (update) {
         window.history.pushState(newState, '', newURL);
@@ -135,7 +146,7 @@ function mainClick(id, popstate) {
     let updateHistory = !popstate;
     console.log(`expand: ${expand}`);
     //                console.log(expand);
-//    id = 'main-' + id;
+    //    id = 'main-' + id;
     $(`.main`).addClass('hidden');
     expandSubheader(expand, showPage, id, updateHistory);
     $('.main').hide();
@@ -152,7 +163,7 @@ function setSubheaderVals() {
     }
 }
 
-function setupHTML () {
+function setupHTML() {
     oDivs = {
         subheader: $('#subheader'),
         icon: $('#subheader').find('#icon'),
@@ -160,6 +171,22 @@ function setupHTML () {
         summary: $('#summary'),
         yourep: $('#yourep')
     }
+}
+
+function loadSecondScriptIfExists(url) {
+    const script = document.createElement('script');
+    script.src = url;
+    script.onload = function () {
+//        console.log('Second script loaded successfully.');
+        // Additional logic after the second script is loaded
+    };
+    script.onerror = function (ev) {
+        ev.preventDefault();
+//        console.error(ev);
+        console.log('NOTE: 404 error above is a non-issue in deployment');
+        // Additional error handling logic
+    };
+    document.head.appendChild(script);
 }
 
 function setup() {
@@ -185,16 +212,19 @@ function setup() {
     //                showPage();
     //                showPage(homepage);
     //                setInterval(countdown, 2000);
-    state = {page: homepage};
-//    console.log('clear the history')
+    state = {
+        page: homepage
+    };
+    //    console.log('clear the history')
     window.history.replaceState(state, '', '');
+    loadSecondScriptIfExists('js/devtools/devtools.js');
     setupHTML();
     setSubheaderVals();
 }
 window.addEventListener('popstate', function (event) {
     if (event.state) {
         console.log(event.state);
-//        showPage(event.state.page, false);
+        //        showPage(event.state.page, false);
         mainClick(event.state.page, true);
     }
 });

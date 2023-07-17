@@ -2,6 +2,7 @@
     border: 0;
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 body,
@@ -188,6 +189,16 @@ body {
     height: 112px;
     color: white;
 /*    opacity: 0.5;*/
+}
+#debug {
+    position: fixed;
+    right: 30px;
+    top: 10px;
+    color: #85d66d;
+/*    pointer-events: none;*/
+}
+#debug:hover {
+    color: #69fa3e;
 }
 h1 {
     margin: 0;
