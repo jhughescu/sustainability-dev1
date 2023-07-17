@@ -19,28 +19,15 @@
         'bat'
     ];
     function changeURL() {
-        // New URL state
         let p = pages.pop()
         const newState = {
             page: p
         };
-
-        // New URL
         const newURL = '#' + p;
-
-        // Push the new state and URL to the history stack
         window.history.pushState(newState, '', newURL);
-
-        // Update the page content
-        document.querySelector('h1').textContent = 'New URL: ' + newURL;
     }
-
-    // Listen for the 'popstate' event
     window.addEventListener('popstate', function(event) {
-        // Handle the back/forward button click
         if (event.state) {
-            // Update the page content based on the state
-            document.querySelector('h1').textContent = 'Current URL: ' + location.pathname;
             console.log(event.state);
         }
     });
