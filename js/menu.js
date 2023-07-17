@@ -89,7 +89,7 @@ function countdown() {
 }
 
 function expandSubheader(boo, f, p, updateHistory) {
-    console.log('expand');
+//    console.log('expand');
     let d = 200;
     let o = boo ? oUp : oDown
     let ofk = boo ? oUpFunk : oDownFunk;
@@ -123,8 +123,8 @@ function updateHistory(p, update) {
 }
 
 function showPage(p, update) {
-    console.log('show ' + p);
-    console.log('update? ' + update);
+//    console.log('show ' + p);
+//    console.log('update? ' + update);
     $(`.main`).addClass('hidden');
     if (p) {
         updateHistory(p, update);
@@ -141,10 +141,10 @@ function showPage(p, update) {
 }
 
 function mainClick(id, popstate) {
-    console.log(`mainClick: ${id}`);
+//    console.log(`mainClick: ${id}`);
     let expand = id !== 'home';
     let updateHistory = !popstate;
-    console.log(`expand: ${expand}`);
+//    console.log(`expand: ${expand}`);
     //                console.log(expand);
     //    id = 'main-' + id;
     $(`.main`).addClass('hidden');
