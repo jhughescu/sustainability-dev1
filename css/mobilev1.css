@@ -325,7 +325,7 @@ h1 {
     line-height: 2.5rem;
 }
 
-.grid-container {
+.grid-container-home {
     max-width: 600px;
     margin: 0 auto;
     display: grid;
