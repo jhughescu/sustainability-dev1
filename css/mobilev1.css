@@ -16,6 +16,7 @@ body {
     background-color: #f2f2f2;
     position: absolute;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 #centered {
 /*    background-color: red;*/
@@ -59,7 +60,10 @@ body {
     background-size: contain;
     left: calc(50% + 50px);
     top: 330px;
-/*    margin: 20px auto;*/
+    display: none;
+}
+#subheader.lead #crown  {
+    display: block;
 }
 #subheader .title {
     font-size: 0.65em;
@@ -334,6 +338,31 @@ h1 {
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     padding-bottom: 90px;
+/*    background-color: bisque;*/
+}
+.selector {
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+}
+.selector .tile {
+    width: 220px;
+    font-size: 1rem;
+}
+.selector .title {
+/*    width: 220px;*/
+    font-size: 1.6rem;
+}
+.grid-container-selector {
+/*    max-width: 600px;*/
+/*    margin: 0 auto;*/
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+/*    grid-auto-rows: 6fr;*/
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+/*    padding-bottom: 90px;*/
 /*    background-color: bisque;*/
 }
 

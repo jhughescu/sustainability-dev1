@@ -247,7 +247,7 @@ function setup() {
         mainClick('home');
     });
 
-    $('.tile').css({
+    $('#main-home').find('.tile').css({
         height: $('.tile').width() + 'px'
     });
     //                showPage();
