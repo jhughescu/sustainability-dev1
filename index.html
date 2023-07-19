@@ -2,104 +2,136 @@
 <html>
 
     <head>
-        <title>Sustainabilty Mobile Screen dev</title>
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Sustainabilty Mobile Screen dev</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
-        <script src='js/menu.js'></script>
-<!--        <script src='js/devtools.js'></script>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
+    <script src='js/menu.js'></script>
+    <!--        <script src='js/devtools.js'></script>-->
 
-        <link rel='stylesheet' href='css/mobilev1.css'>
-    </head>
+    <link rel='stylesheet' href='css/mobilev1.css'>
+    <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less" ></script>
+</head>
 
-    <body>
-        <div id='wrapper'>
-            <div id='centered'>
-                <div id='header'>
-                    <div id='logo'></div>
-                    <h1>company Name</h1>
-                    <div id='debug'></div>
+<body>
+    <div id='wrapper'>
+        <div id='centered'>
+            <div id='header'>
+                <div id='logo'></div>
+                <h1>company Name</h1>
+                <div id='debug'></div>
+            </div>
+            <div id='content'>
+                <div id='subheader' class=''>
+                    <div id='yourep' class='full'>You represent</div>
+                    <div id='icon'></div>
+                    <div id='crown'></div>
+                    <div id='title'>
+                        <h2>Switch?</h2>
+                        <p class='title'></p>
+                    </div>
+                    <div id='summary'>
+                        <p class='title italic'><i></i></p>
+                    </div>
                 </div>
-                <div id='content'>
-                    <div class='lead' id='subheader'>
-                        <div id='yourep' class='full'>You represent</div>
-                        <div id='icon'></div>
-                        <div id='crown'></div>
-                        <div id='title'>
-                            <h2>Alex Gogetum 2</h2>
-                            <p class='title'>(Individual Change Maker)</p>
-                        </div>
-                        <div id='summary'>
-                            <p class='title italic'><i>You have been assigned the role of team leader for this round. This means that only you will be able to submit your team’s decisions.</i></p>
-                        </div>
-                    </div>
-<!--                    <div id='panel'>the panel</div>-->
-                    <div class='main grid-container' id='main-home'>
+                <!--                    <div id='panel'>the panel</div>-->
 
-                        <div class='grid-item tile button home' id='tile-resources'>
-                            <div class='icon resources'></div>
-                            <div class='title'>Resources</div>
-                        </div>
-                        <div class='grid-item tile button home' id='tile-bios'>
-                            <div class='icon'></div>
-                            <div class='title'>Bios</div>
-                        </div>
-                        <div class='grid-item tile button home' id='tile-headlines2030'>
-                            <div class='icon'></div>
-                            <div class='title'>2030 Headlines</div>
-                        </div>
-                        <div class='grid-item tile button home' id='tile-move2030'>
-                            <div class='icon'></div>
-                            <div class='title'>2030 Move</div>
-                        </div>
-                        <div class='grid-item tile button home' id='tile-headlines2040'>
-                            <div class='icon'></div>
-                            <div class='title'>2040 Headlines</div>
-                        </div>
-                        <div class='grid-item tile button home' id='tile-move2040'>
-                            <div class='icon'></div>
-                            <div class='title'>2040 Move</div>
-                        </div>
+                <div class='main selector' id='main-selector'>
+                <div class='grid-container-selector'>
+                    <div class='grid-item tile button home' id='tile-govt'>
+                        <div class='icon govt'></div>
+                        <div class='title'>Government</div>
                     </div>
-                    <div class='main page hidden' id='main-resources'>
-                        <div class='button backbutton'></div>
-                        <h3>Resources</h3>
-                        <p>Adopt your strategy to survive and succeed.</p>
-                        <p>Invest your resources and attract support from others.</p>
-                        <div id='resources-meter'><p>4</p></div>
-                        <p>remaining</p>
+                    <div class='grid-item tile button home' id='tile-indiv'>
+                        <div class='icon indiv'></div>
+                        <div class='title'>Individual Change Maker</div>
                     </div>
-                    <div class='main page hidden' id='main-bios'>
-                        <div class='button backbutton'></div>
-                        <h3>Bios</h3>
+                    <div class='grid-item tile button home' id='tile-welas'>
+                        <div class='icon'></div>
+                        <div class='title'>Well-established Business</div>
                     </div>
-                    <div class='main page hidden' id='main-headlines2030'>
-                        <div class='button backbutton'></div>
-                        <h3>2030 Headlines</h3>
+                    <div class='grid-item tile button home' id='tile-civil'>
+                        <div class='icon'></div>
+                        <div class='title'>Civil Society Organisation</div>
                     </div>
-                    <div class='main page hidden' id='main-move2030'>
-                        <div class='button backbutton'></div>
-                        <h3>2030 Move</h3>
+                    <div class='grid-item tile button home' id='tile-small'>
+                        <div class='icon'></div>
+                        <div class='title'>Small Enterprise</div>
                     </div>
-                    <div class='main page hidden' id='main-headlines2040'>
-                        <div class='button backbutton'></div>
-                        <h3>2040 Headlines</h3>
+                    <div class='grid-item tile button home' id='tile-public'>
+                        <div class='icon'></div>
+                        <div class='title'>Public Voices</div>
                     </div>
-                    <div class='main page hidden' id='main-move2040'>
-                        <div class='button backbutton'></div>
-                        <h3>2040 Move</h3>
+                </div>
+                </div>
+                <div class='main grid-container-home hidden' id='main-home'>
+
+                    <div class='grid-item tile button home' id='tile-resources'>
+                        <div class='icon resources'></div>
+                        <div class='title'>Resources</div>
                     </div>
+                    <div class='grid-item tile button home' id='tile-bios'>
+                        <div class='icon'></div>
+                        <div class='title'>Bios</div>
+                    </div>
+                    <div class='grid-item tile button home' id='tile-headlines2030'>
+                        <div class='icon'></div>
+                        <div class='title'>2030 Headlines</div>
+                    </div>
+                    <div class='grid-item tile button home' id='tile-move2030'>
+                        <div class='icon'></div>
+                        <div class='title'>2030 Move</div>
+                    </div>
+                    <div class='grid-item tile button home' id='tile-headlines2040'>
+                        <div class='icon'></div>
+                        <div class='title'>2040 Headlines</div>
+                    </div>
+                    <div class='grid-item tile button home' id='tile-move2040'>
+                        <div class='icon'></div>
+                        <div class='title'>2040 Move</div>
+                    </div>
+                </div>
+                <div class='main page hidden' id='main-resources'>
+                    <div class='button backbutton'></div>
+                    <h3>Resources</h3>
+                    <p>Adopt your strategy to survive and succeed.</p>
+                    <p>Invest your resources and attract support from others.</p>
+                    <div id='resources-meter'>
+                        <p>4</p>
+                    </div>
+                    <p>remaining</p>
+                </div>
+                <div class='main page hidden' id='main-bios'>
+                    <div class='button backbutton'></div>
+                    <h3>Bios</h3>
+                </div>
+                <div class='main page hidden' id='main-headlines2030'>
+                    <div class='button backbutton'></div>
+                    <h3>2030 Headlines</h3>
+                </div>
+                <div class='main page hidden' id='main-move2030'>
+                    <div class='button backbutton'></div>
+                    <h3>2030 Move</h3>
+                </div>
+                <div class='main page hidden' id='main-headlines2040'>
+                    <div class='button backbutton'></div>
+                    <h3>2040 Headlines</h3>
+                </div>
+                <div class='main page hidden' id='main-move2040'>
+                    <div class='button backbutton'></div>
+                    <h3>2040 Move</h3>
                 </div>
             </div>
         </div>
-        <script>
-
-
-        </script>
-    </body>
-</html>
+    </div>
+    <script>
+        homepage = 'selector';
+        homepage = 'home';
+    </script>
+</body></html>
