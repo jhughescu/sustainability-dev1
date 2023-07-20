@@ -1,3 +1,4 @@
+//let homepage = 'selector';
 let homepage = 'home';
 //            let homepage = 'main-resources';
 let c = 10;
@@ -69,6 +70,7 @@ let oDownFunk = {
 
 };
 let state = null;
+let session = [];
 
 function updateDebug(p, v) {
 //    console.log(p, v);
@@ -90,55 +92,15 @@ function updateDebug(p, v) {
     localStorage.setItem(pre + id, v);
 }
 
-function updateDebug1(p, v) {
-//    console.log(p, v);
-    let db = $('#debug');
-    if (db.find(p).length === 0) {
-        db.append(`<p id='debug-${p}'></p>`);
-    }
-    db.find(`#debug-${p}`).html(`${p}: ${v}`);
-}
-
-
-function updateDebug2(p, v) {
-//    console.log(p, v);
-    let pre = 'susdev-';
-    let post = '';
-    let id = `debug-${p}`;
-    let db = $('#debug');
-    if (db.find(`#${id}`).length === 0) {
-        db.append(`<p id=${id}'></p>`);
-    }
-//    if (localStorage.getItem(pre + id)) {
-//        if (localStorage.getItem(pre + id) !== v) {
-//            post = '*';
-//        }
-//    }
-    console.log(`#${id}`);
-    console.log(db.find(`#${id}`));
-//    db.find(`#${id}`).html(`${p}: ${v}`);
-    db.find(`#${id}`).html('shit');
-    localStorage.setItem(pre + id, v);
-}
-function countdown() {
-    $('#resources-meter').find('p').html(c);
-    if (c > 1) {
-        c -= 1;
-    } else {
-        c = 10;
-    }
-}
-
 function expandSubheader(boo, f, p, updateHistory) {
-//    console.log('expand');
+//    console.log(`expand: ${boo}`);;
     let d = 200;
     let o = boo ? oUp : oDown
     let ofk = boo ? oUpFunk : oDownFunk;
-    //    console.log(o);
-    //    console.log(ofk);
+    let proc = session.length > 0 ? 'animate' : 'css'
     for (i in oDivs) {
-        //        console.log(oDivs[i]);
-        oDivs[i].animate(o[i], d, function () {
+//        console.log(oDivs[i]);
+        oDivs[i][proc](o[i], d, function () {
             if (ofk.hasOwnProperty(i)) {
                 ofk[i]();
             }
@@ -164,7 +126,8 @@ function updateHistory(p, update) {
 }
 
 function showPage(p, update) {
-//    console.log('show ' + p);
+    console.log('show ' + p);
+    session.push(p);
 //    console.log('update? ' + update);
     $(`.main`).addClass('hidden');
     if (p) {
@@ -182,10 +145,10 @@ function showPage(p, update) {
 }
 
 function mainClick(id, popstate) {
-//    console.log(`mainClick: ${id}`);
+    console.log(`mainClick: ${id}`);
     let expand = id !== 'home';
     let updateHistory = !popstate;
-//    console.log(`expand: ${expand}`);
+    console.log(`expand: ${expand}`);
     //                console.log(expand);
     //    id = 'main-' + id;
     $(`.main`).addClass('hidden');
@@ -231,6 +194,10 @@ function loadSecondScriptIfExists(url) {
 }
 
 function setup() {
+    if (window.location.hash) {
+        homepage = window.location.hash.replace('#', '');
+        console.log(homepage)
+    }
     $('.tile.button.home').off('click');
     $('.tile.button.home').on('click', function () {
         let id = $(this).attr('id');
@@ -251,16 +218,19 @@ function setup() {
         height: $('.tile').width() + 'px'
     });
     //                showPage();
-    //                showPage(homepage);
+//                    showPage(homepage);
+
     //                setInterval(countdown, 2000);
     state = {
         page: homepage
     };
     //    console.log('clear the history')
     window.history.replaceState(state, '', '');
+    session = [];
     loadSecondScriptIfExists('js/devtools/devtools.js');
     setupHTML();
     setSubheaderVals();
+    mainClick(homepage, false);
 }
 window.addEventListener('popstate', function (event) {
     if (event.state) {
