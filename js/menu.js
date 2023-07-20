@@ -253,14 +253,19 @@ function setup() {
     //                showPage();
     //                showPage(homepage);
     //                setInterval(countdown, 2000);
+    if (window.location.hash) {
+        homepage = window.location.hash.replace('#', '');
+    }
     state = {
         page: homepage
     };
+
     //    console.log('clear the history')
     window.history.replaceState(state, '', '');
     loadSecondScriptIfExists('js/devtools/devtools.js');
     setupHTML();
     setSubheaderVals();
+    mainClick(homepage);
 }
 window.addEventListener('popstate', function (event) {
     if (event.state) {
