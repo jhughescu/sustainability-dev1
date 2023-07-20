@@ -124,31 +124,36 @@ function updateHistory(p, update) {
         window.history.pushState(newState, '', newURL);
     }
 }
-
+function camel (s) {
+    return s.substr(0, 1).toUpperCase() + s.substr(1);
+}
+function pageReadyHome () {
+    $('#main-home').find('.tile').css({
+        height: $('#main-home').find('.tile').width() + 'px'
+    });
+}
 function showPage(p, update) {
-    console.log('show ' + p);
+    let funk = `pageReady${camel(p)}`;
+//    console.log('show ' + p);
     session.push(p);
-//    console.log('update? ' + update);
     $(`.main`).addClass('hidden');
     if (p) {
         updateHistory(p, update);
         p = 'main-' + p;
         $(`#${p}`).removeClass('hidden');
         $(`#${p}`).show();
-
-        if (p !== 'main-home') {
-            //                        $(`#subheader`).addClass('sub');
-        }
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
-
+    if (this[funk]) {
+        this[funk]();
+    }
 }
 
 function mainClick(id, popstate) {
-    console.log(`mainClick: ${id}`);
+//    console.log(`mainClick: ${id}`);
     let expand = id !== 'home';
     let updateHistory = !popstate;
-    console.log(`expand: ${expand}`);
+//    console.log(`expand: ${expand}`);
     //                console.log(expand);
     //    id = 'main-' + id;
     $(`.main`).addClass('hidden');
@@ -196,7 +201,7 @@ function loadSecondScriptIfExists(url) {
 function setup() {
     if (window.location.hash) {
         homepage = window.location.hash.replace('#', '');
-        console.log(homepage)
+//        console.log(homepage);
     }
     $('.tile.button.home').off('click');
     $('.tile.button.home').on('click', function () {
@@ -214,9 +219,8 @@ function setup() {
         mainClick('home');
     });
 
-    $('.tile').css({
-        height: $('.tile').width() + 'px'
-    });
+
+
     //                showPage();
 //                    showPage(homepage);
 
